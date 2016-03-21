@@ -1,0 +1,55 @@
+
+<div style="margin:1.5em;">
+	<h3><%= order.id %></h3>
+	<h3><%= order.lastEvent %></h3>
+	<h3><%= order.status %></h3>
+	<h3><%= order.itemMoney %></h3>
+	<h3><%= order.freightMoney %></h3>
+	<!-- <h3><%= order.orderMoney %></h3> -->
+	<h3><%= order.prePayId %></h3>
+
+
+<h1 class="btn-payment" 
+		style="background-color:red;padding:1em;padding:.8em;text-align:center;">
+	<span style="font-style:oblique;color:#42CA42;">
+		需付: &yen;<%= order.orderMoney.toFixed(2) %> </span>
+	&nbsp;
+	<span style="color:white;">微信安全支付</span>
+</h1>
+
+</div>
+
+<script type="text/javascript">
+	$(function (argument) {
+		$(".btn-payment").on("click", function() {
+			if (typeof WeixinJSBridge == "undefined"){
+				alert('请在微信浏览器内完成支付!');
+			}else{
+				onBridgeReady();
+			}
+		});
+	});
+
+
+    function onBridgeReady(){
+		WeixinJSBridge.invoke(
+			'getBrandWCPayRequest', {
+				"appId" : '<%= paySign.appId %>',     //公众号名称，由商户传入     
+				"timeStamp" : '<%= paySign.timeStamp %>',         //时间戳，自1970年以来的秒数     
+				"nonceStr" : '<%= paySign.nonceStr %>', //随机串     
+				"package" : '<%= paySign["package"] %>',     
+				"signType" : '<%= paySign.signType %>',         //微信签名方式：     
+				"paySign" : '<%= paySign.paySign %>' //微信签名 
+			},
+			function(res){   
+			   // 支付完成
+			   if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+					var url 	= 'http://www.damiaa.com/#/pay-complete/<%= order.id %>';
+					window.location.href = url;
+			   } else {
+					//alert(res.err_msg);
+			   }
+			}
+		); 
+    }
+</script>

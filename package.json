@@ -1,0 +1,31 @@
+{
+  "name": "damiaa-pay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunhui2001/damiaa-pay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chunhui2001/damiaa-pay/issues"
+  },
+  "homepage": "https://github.com/chunhui2001/damiaa-pay#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-ejs-layouts": "^2.0.0",
+    "express-session": "^1.13.0",
+    "morgan": "^1.7.0",
+    "request": "^2.69.0",
+    "underscore": "^1.8.3"
+  }
+}
