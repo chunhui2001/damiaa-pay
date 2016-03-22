@@ -1,13 +1,8 @@
 
-<div style="margin:1.5em;">
-	<h3><%= order.id %></h3>
-	<h3><%= order.lastEvent %></h3>
-	<h3><%= order.status %></h3>
-	<h3><%= order.itemMoney %></h3>
-	<h3><%= order.freightMoney %></h3>
-	<!-- <h3><%= order.orderMoney %></h3> -->
-	<h3><%= order.prePayId %></h3>
-
+<div style="margin:1.5em;margin-top:8em;">
+<h3 style="text-align:center;font-size:3em;color:gray;">请确认支付金额</h3>
+<h1 style="text-align:center;font-size:8.5em;margin:.8em 0;margin-top:.3em;">
+&yen;<%= order.orderMoney.toFixed(2) %></h1>
 
 <h1 class="btn-payment" 
 		style="background-color:red;padding:1em;padding:.8em;text-align:center;">
